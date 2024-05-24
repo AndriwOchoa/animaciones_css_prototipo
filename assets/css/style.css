@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-areas: "header" "section" "main" "footer";
+  grid-template-rows: 4em 4em 1fr 3em;
+  height: 100vh;
+}
+body header {
+  grid-area: header;
+  background-color: #151515;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  position: relative;
+}
+body header .header_title {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+body header .header_nav #menu_btn {
+  display: none;
+}
+body header .header_nav #menu_btn:checked ~ nav {
+  height: 10em;
+  padding: 1em;
+}
+body header .header_nav nav {
+  position: absolute;
+  top: 100%;
+  background-color: rgb(68, 68, 68);
+  left: 0;
+  right: 0;
+  height: 0;
+  overflow: hidden;
+}
+body header .header_nav nav ul {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1em;
+}
+body header .header_nav nav ul li {
+  list-style: none;
+}
+body header .header_nav nav ul li a {
+  text-decoration: none;
+}
+body section {
+  grid-area: section;
+  background-color: #A91D3A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body section .order {
+  color: white;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+body section .order select {
+  width: 10em;
+}
+body main {
+  grid-area: main;
+  overflow: auto;
+  padding-top: 2em;
+}
+body main .cards_container {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: 1fr;
+}
+body main .cards_container .cards {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+}
+body main .cards_container .cards .flip_card {
+  background-color: transparent;
+  width: 250px;
+  height: 500px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+}
+body main .cards_container .cards .flip_card .flip_card_inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+body main .cards_container .cards .flip_card .flip_card_inner .flip_card_front,
+body main .cards_container .cards .flip_card .flip_card_inner .flip_card_back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 3em;
+}
+body main .cards_container .cards .flip_card .flip_card_inner .flip_card_front {
+  background-color: #bbb;
+  color: black;
+}
+body main .cards_container .cards .flip_card .flip_card_inner .flip_card_front img {
+  width: 250px;
+  height: 500px;
+}
+body main .cards_container .cards .flip_card .flip_card_inner .flip_card_back {
+  background-color: rgb(8, 0, 62);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+body main .cards_container .cards .flip_card .flip_card_inner .flip_card_back p {
+  color: white;
+}
+body main .cards_container .cards .flip_card:hover .flip_card_inner {
+  transform: rotateY(180deg);
+}
+body footer {
+  grid-area: footer;
+  background-color: #151515;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+body footer i {
+  color: white;
+}
+body footer a {
+  color: white;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 576px) and (max-width: 992px) {
+  body {
+    grid-template-areas: "header header" "section main" "footer footer";
+    grid-template-rows: 4em 1fr 3em;
+    grid-template-columns: 10em 1fr;
+  }
+  body header .header_nav #menu_btn {
+    display: none;
+  }
+  body header .header_nav label {
+    display: none;
+  }
+  body header .header_nav nav {
+    display: flex;
+    position: static;
+    background-color: transparent;
+    height: auto;
+    overflow: visible;
+  }
+  body header .header_nav nav ul {
+    display: flex;
+    flex-flow: row;
+    gap: 2em;
+  }
+  body main .cards_container {
+    grid-gap: 0.5em;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  body main .cards_container .cards {
+    padding: 0.5em;
+    gap: 1em;
+  }
+  body main .cards_container .cards p {
+    font-size: 1em;
+  }
+  body main .cards_container .cards img {
+    width: 60%;
+    border-radius: 1em;
+  }
+}
+@media screen and (min-width: 992px) {
+  body {
+    grid-template-areas: "header section" "header main" "footer main";
+    grid-template-columns: 15% 1fr;
+    grid-template-rows: 6em auto 6em;
+  }
+  body header {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-top: 2em;
+    gap: 2em;
+  }
+  body header .header_nav #menu_btn {
+    display: none;
+  }
+  body header .header_nav label {
+    display: none;
+  }
+  body header .header_nav nav {
+    display: flex;
+    position: static;
+    background-color: transparent;
+    height: auto;
+  }
+  body section .order select {
+    width: 50em;
+  }
+  body main .cards_container {
+    padding: 5em;
+  }
+}
+.cairo-play-light {
+  font-family: "Cairo Play", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.cairo-play-light-nav {
+  font-family: "Cairo Play", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+  color: white;
+  font-size: 1em;
+}
+
+.cairo-play-regular {
+  font-family: "Cairo Play", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.cairo-play-medium {
+  font-family: "Cairo Play", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.cairo-play-medium-title {
+  font-family: "Cairo Play", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: 2em;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.cairo-play-medium-cards {
+  font-family: "Cairo Play", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+  font-size: 1.5em;
+}/*# sourceMappingURL=style.css.map */
