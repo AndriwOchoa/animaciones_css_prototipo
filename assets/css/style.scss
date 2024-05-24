@@ -117,7 +117,6 @@ body {
                     background-color: transparent;
                     width: 250px;
                     height: 500px;
-                    border: 1px solid #f1f1f1;
                     perspective: 1000px;
 
                     .flip_card_inner {
@@ -173,7 +172,7 @@ body {
 
     footer {
         grid-area: footer;
-        background-color: #151515;
+        background-color: #4e0000;
         color: white;
         display: flex;
         justify-content: center;
@@ -268,7 +267,7 @@ body {
             "header main"
             "footer main";
         grid-template-columns: 15% 1fr;
-        grid-template-rows: 6em auto 6em;
+        grid-template-rows: 6em auto 5em;
 
         header {
 
